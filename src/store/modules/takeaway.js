@@ -1,36 +1,25 @@
-// 编写store
-import {createSlice} from "@reduxjs/toolkit"
-import axios from "axios"
+import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const foodStore = createSlice({
-    name: "food",
+const foodsStore = createSlice({
+    name: 'foods',
     initialState: {
-        // 商品列表
-        foodList: [],
-        // 菜单激活下标值
-        activeIndex: 0
+        foodList: []
     },
     reducers: {
-        // 设置商品列表
-        setFoodList(state, action) {
+        setFoodList: (state, action) => {
             state.foodList = action.payload
-        },
-        // 设置菜单激活下标值
-        setActiveIndex(state, action) {
-            state.activeIndex = action.payload
         }
     }
 })
+const { setFoodList } = foodsStore.actions
 
-// 异步获取部分
-const {setFoodList, setActiveIndex} = foodStore.actions
-const fetchFoodList = () => {
-    return async (dispatch) => {
-        const res = await axios.get("http://localhost:3004/takeaway")
-        dispatch(setFoodList(res.data))
+const fetchFoodList =()=>{
+    return async(dispatch)=>{
+       const res=await axios.get('http://localhost:3004/takeaway')
+       dispatch(setFoodList(res.data))
     }
 }
-export { fetchFoodList,setActiveIndex}
-
-const reducer = foodStore.reducer
+export { fetchFoodList }
+const reducer =foodsStore.reducer
 export default reducer

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import './index.scss'
 import { useDispatch,useSelector } from 'react-redux'
-import {setActiveIndex} from '../../store/modules/takeaway'
+// import {setActiveIndex} from '../../store/modules/takeaway'
 
 const Menu = (props) => {
   // const foodsList = [
@@ -71,7 +71,6 @@ const Menu = (props) => {
       {menus.map((item, index) => {
         return (
           <div
-            onClick={() => dispatch(setActiveIndex(index))}
             key={item.tag}
             className={classNames(
               'list-menu-item',
