@@ -17,7 +17,9 @@ const Foods = ({
   return (
     <dd className="cate-goods">
       <div className="goods-img-wrap">
-        <img src={picture} alt="" className="goods-img" />
+        <img   src={`https://images.weserv.nl/?url=${encodeURIComponent(picture)}`} 
+  alt=""  className="goods-img" onLoad={() => console.log('图片加载成功')}
+  onError={() => console.log('图片加载失败')}/>
       </div>
       <div className="goods-info">
         <div className="goods-desc">
