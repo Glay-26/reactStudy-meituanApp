@@ -15,7 +15,7 @@ const App = () => {
     dispatch(fetchFoodList())
   }, [dispatch])
 
-  const {foodList}= useSelector(state => state.foods)
+  const {foodList, activeIndex}= useSelector(state => state.foods)
 
   return (
     <div className="home">
@@ -31,9 +31,9 @@ const App = () => {
           <div className="list-content">
             <div className="goods-list">
               {/* 外卖商品列表 */}
-              {foodList.map(item => {
+              {foodList.map((item,index) => {
                 return (
-                  <FoodsCategory
+                  activeIndex===index&&<FoodsCategory
                     key={item.tag}
                     // 列表标题
                     name={item.name}
